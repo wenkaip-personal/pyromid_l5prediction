@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>l5kit.geometry.voxel module &mdash; L5Kit 1.0.0 documentation</title>
+  <title>l5kit.geometry.voxel module &mdash; L5Kit 1.0.3 documentation</title>
   
 
   
@@ -182,64 +182,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-l5kit.geometry.voxel">
-<span id="l5kit-geometry-voxel-module"></span><h1>l5kit.geometry.voxel module<a class="headerlink" href="#module-l5kit.geometry.voxel" title="Permalink to this headline">¶</a></h1>
-<dl class="py function">
-<dt id="l5kit.geometry.voxel.normalize_intensity">
-<code class="sig-prename descclassname">l5kit.geometry.voxel.</code><code class="sig-name descname">normalize_intensity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">max_intensity</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#l5kit.geometry.voxel.normalize_intensity" title="Permalink to this definition">¶</a></dt>
-<dd><p>Normalize (divide by max) and clip intensity values to fall between 0 and 1.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>np.npdarray</em>) – numpy array of any shape</p></li>
-<li><p><strong>max_intensity</strong> (<em>float</em>) – Maximum intensity value (anything above this will become 1)</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>np.ndarray – array of same type and shape as x with values between 0 and 1 only</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="l5kit.geometry.voxel.points_within_bounds">
-<code class="sig-prename descclassname">l5kit.geometry.voxel.</code><code class="sig-name descname">points_within_bounds</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coords</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">shape</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>Collection<span class="p">[</span>int<span class="p">]</span><span class="p">, </span>numpy.ndarray<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#l5kit.geometry.voxel.points_within_bounds" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>coords</strong> (<em>np.ndarray</em>) – (N,3)-shaped array containing points.</p></li>
-<li><p><strong>shape</strong> (<em>tuple of ints</em><em> or </em><em>np.ndarray</em>) – shape to use as bounds, should be length 3</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Binary mask for given coords array which is True for points that fall within the bounds of shape.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="l5kit.geometry.voxel.voxel_coords_to_intensity_grid">
-<code class="sig-prename descclassname">l5kit.geometry.voxel.</code><code class="sig-name descname">voxel_coords_to_intensity_grid</code><span class="sig-paren">(</span><em class="sig-param">voxel_coords: numpy.ndarray</em>, <em class="sig-param">shape: tuple</em>, <em class="sig-param">dtype: numpy.dtype = &lt;class 'numpy.float32'&gt;</em>, <em class="sig-param">drop_out_of_bounds: bool = True</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#l5kit.geometry.voxel.voxel_coords_to_intensity_grid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Puts coords into a grid: for each grid cell the number of points is written there.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>voxel_coords</strong> (<em>np.ndarray</em>) – input array with coords (N,3) in intensity grid</p></li>
-<li><p><strong>shape</strong> (<em>tuple of ints</em>) – intensity grid shape</p></li>
-</ul>
-</dd>
-<dt class="field-even">Keyword Arguments</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>dtype</strong> (<em>data-type</em>) – data type for the intensity grid (default: {np.float32})</p></li>
-<li><p><strong>drop_out_of_bounds</strong> (<em>bool</em>) – [description] (default: {True})</p></li>
-</ul>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>np.ndarray – Array with given shape, the value of each cell is the amount of coords for that point.</p>
-</dd>
-</dl>
-</dd></dl>
-
+  <div class="section" id="l5kit-geometry-voxel-module">
+<h1>l5kit.geometry.voxel module<a class="headerlink" href="#l5kit-geometry-voxel-module" title="Permalink to this headline">¶</a></h1>
 </div>
 
 

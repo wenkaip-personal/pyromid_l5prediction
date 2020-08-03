@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ML Prediction, Planning and Simulation for Self-Driving &mdash; L5Kit 1.0.0 documentation</title>
+  <title>ML Prediction, Planning and Simulation for Self-Driving &mdash; L5Kit 1.0.3 documentation</title>
   
 
   
@@ -199,6 +199,9 @@
 </div>
 <div class="section" id="news">
 <h1>News<a class="headerlink" href="#news" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>06-25-2020: Docs and API available at https://lyft.github.io/l5kit/ (thanks Kevin Zhao!)</p></li>
+</ul>
 </div>
 <div class="section" id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
@@ -255,7 +258,7 @@ It consists of the following components:</p>
 </div>
 <div class="section" id="download-the-datasets">
 <h2>2. Download the datasets<a class="headerlink" href="#download-the-datasets" title="Permalink to this headline">¶</a></h2>
-<p>Register at https://self-driving.lyft.com/level5/data/ and download the <a class="reference external" href="https://tinyurl.com/lyft-prediction-dataset">2020 Lyft prediction dataset</a>. Store all files in a single folder.
+<p>Register at https://self-driving.lyft.com/level5/data/ and download the <a class="reference external" href="https://arxiv.org/abs/2006.14480">2020 Lyft prediction dataset</a>. Store all files in a single folder.
 The resulting directory structure should be:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="o">-</span><span class="n">dataset</span><span class="o">/</span>
   <span class="o">+-</span> <span class="n">sample_scenes</span><span class="o">/</span>
@@ -271,6 +274,11 @@ The resulting directory structure should be:</p>
 pip install -r requirements.txt
 </pre></div>
 </div>
+<p>If you run into trouble installing L5Kit on Windows, you may need to</p>
+<ul class="simple">
+<li><p>install Pytorch and torchvision manually first (select the correct version required by your system, i.e. GPU or CPU-only), then run L5Kit install (remove the packages <a class="reference external" href="https://github.com/lyft/l5kit/blob/59f36f348682aac5fc488c6d39dd58f8c27b1ec6/l5kit/setup.py#L23">torch</a> and <a class="reference external" href="https://github.com/lyft/l5kit/blob/59f36f348682aac5fc488c6d39dd58f8c27b1ec6/l5kit/setup.py#L24">torchvision</a> from <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>)</p></li>
+<li><p>install <a class="reference external" href="https://visualstudio.microsoft.com/visual-cpp-build-tools/">Microsoft C++ Build Tools</a>.</p></li>
+</ul>
 </div>
 <div class="section" id="generate-l5kit-code-html-documentation-optional">
 <h2>4. Generate L5Kit code html documentation (optional)<a class="headerlink" href="#generate-l5kit-code-html-documentation-optional" title="Permalink to this headline">¶</a></h2>
@@ -311,10 +319,13 @@ sphinx-build . docs
 <h2>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h2>
 <p>If you are using L5Kit or dataset in your work please cite the following <a class="reference external" href="https://arxiv.org/abs/2006.14480">whitepaper</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@misc</span><span class="p">{</span><span class="n">lyft2020</span><span class="p">,</span>
-<span class="n">title</span> <span class="o">=</span> <span class="p">{</span><span class="n">One</span> <span class="n">Thousand</span> <span class="ow">and</span> <span class="n">One</span> <span class="n">Hours</span><span class="p">:</span> <span class="n">Self</span><span class="o">-</span><span class="n">driving</span> <span class="n">Motion</span> <span class="n">Prediction</span> <span class="n">Dataset</span><span class="p">},</span>
-<span class="n">author</span> <span class="o">=</span> <span class="p">{</span><span class="n">Houston</span><span class="p">,</span> <span class="n">J</span><span class="o">.</span> <span class="ow">and</span> <span class="n">Zuidhof</span><span class="p">,</span> <span class="n">G</span><span class="o">.</span> <span class="ow">and</span> <span class="n">Bergamini</span><span class="p">,</span> <span class="n">L</span><span class="o">.</span> <span class="ow">and</span> <span class="n">Ye</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span> <span class="ow">and</span> <span class="n">Jain</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span> <span class="ow">and</span> <span class="n">Omari</span><span class="p">,</span> <span class="n">S</span><span class="o">.</span> <span class="ow">and</span> <span class="n">Iglovikov</span><span class="p">,</span> <span class="n">V</span><span class="o">.</span> <span class="ow">and</span> <span class="n">Ondruska</span><span class="p">,</span> <span class="n">P</span><span class="o">.</span><span class="p">},</span>
-<span class="n">year</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2020</span><span class="p">},</span>
-<span class="n">howpublished</span> <span class="o">=</span> <span class="p">{</span>\<span class="n">url</span><span class="p">{</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="bp">self</span><span class="o">-</span><span class="n">driving</span><span class="o">.</span><span class="n">lyft</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="p">}}</span>
+    <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="n">One</span> <span class="n">Thousand</span> <span class="ow">and</span> <span class="n">One</span> <span class="n">Hours</span><span class="p">:</span> <span class="n">Self</span><span class="o">-</span><span class="n">driving</span> <span class="n">Motion</span> <span class="n">Prediction</span> <span class="n">Dataset</span><span class="p">},</span>
+    <span class="n">author</span><span class="o">=</span><span class="p">{</span><span class="n">John</span> <span class="n">Houston</span> <span class="ow">and</span> <span class="n">Guido</span> <span class="n">Zuidhof</span> <span class="ow">and</span> <span class="n">Luca</span> <span class="n">Bergamini</span> <span class="ow">and</span> <span class="n">Yawei</span> <span class="n">Ye</span> <span class="ow">and</span> <span class="n">Ashesh</span> <span class="n">Jain</span> <span class="ow">and</span> <span class="n">Sammy</span> <span class="n">Omari</span> <span class="ow">and</span> <span class="n">Vladimir</span> <span class="n">Iglovikov</span> <span class="ow">and</span> <span class="n">Peter</span> <span class="n">Ondruska</span><span class="p">},</span>
+    <span class="n">year</span><span class="o">=</span><span class="p">{</span><span class="mi">2020</span><span class="p">},</span>
+    <span class="n">eprint</span><span class="o">=</span><span class="p">{</span><span class="mf">2006.14480</span><span class="p">},</span>
+    <span class="n">archivePrefix</span><span class="o">=</span><span class="p">{</span><span class="n">arXiv</span><span class="p">},</span>
+    <span class="n">primaryClass</span><span class="o">=</span><span class="p">{</span><span class="n">cs</span><span class="o">.</span><span class="n">CV</span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p><img alt="Lyft Level 5" src="_images/lyft.jpg" /></p>

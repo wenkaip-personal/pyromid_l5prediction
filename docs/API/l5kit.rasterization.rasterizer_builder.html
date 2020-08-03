@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>l5kit.rasterization.rasterizer_builder module &mdash; L5Kit 1.0.0 documentation</title>
+  <title>l5kit.rasterization.rasterizer_builder module &mdash; L5Kit 1.0.3 documentation</title>
   
 
   
@@ -157,35 +157,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-l5kit.rasterization.rasterizer_builder">
-<span id="l5kit-rasterization-rasterizer-builder-module"></span><h1>l5kit.rasterization.rasterizer_builder module<a class="headerlink" href="#module-l5kit.rasterization.rasterizer_builder" title="Permalink to this headline">¶</a></h1>
-<dl class="py function">
-<dt id="l5kit.rasterization.rasterizer_builder.build_rasterizer">
-<code class="sig-prename descclassname">l5kit.rasterization.rasterizer_builder.</code><code class="sig-name descname">build_rasterizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cfg</span><span class="p">:</span> <span class="n">dict</span></em>, <em class="sig-param"><span class="n">data_manager</span><span class="p">:</span> <span class="n"><a class="reference internal" href="l5kit.data.local_data_manager.html#l5kit.data.local_data_manager.DataManager" title="l5kit.data.local_data_manager.DataManager">l5kit.data.local_data_manager.DataManager</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="l5kit.rasterization.rasterizer.html#l5kit.rasterization.rasterizer.Rasterizer" title="l5kit.rasterization.rasterizer.Rasterizer">l5kit.rasterization.rasterizer.Rasterizer</a><a class="headerlink" href="#l5kit.rasterization.rasterizer_builder.build_rasterizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Factory function for rasterizers, reads the config, loads required data and initializes the correct rasterizer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>cfg</strong> (<em>dict</em>) – Config.</p></li>
-<li><p><strong>data_manager</strong> (<a class="reference internal" href="l5kit.data.html#l5kit.data.DataManager" title="l5kit.data.DataManager"><em>DataManager</em></a>) – Datamanager that is used to require files to be present.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>NotImplementedError</strong> – Thrown when the <code class="docutils literal notranslate"><span class="pre">map_type</span></code> read from the config doesn’t have an associated rasterizer</p></li>
-<li><p><strong>type in this factory function. If you have custom rasterizers</strong><strong>, </strong><strong>you can wrap this function in your own factory</strong> – </p></li>
-<li><p><strong>function and catch this error.</strong> – </p></li>
-</ul>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Rasterizer initialized given the supplied config.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="l5kit.rasterization.html#l5kit.rasterization.Rasterizer" title="l5kit.rasterization.Rasterizer">Rasterizer</a></p>
-</dd>
-</dl>
-</dd></dl>
-
+  <div class="section" id="l5kit-rasterization-rasterizer-builder-module">
+<h1>l5kit.rasterization.rasterizer_builder module<a class="headerlink" href="#l5kit-rasterization-rasterizer-builder-module" title="Permalink to this headline">¶</a></h1>
 </div>
 
 

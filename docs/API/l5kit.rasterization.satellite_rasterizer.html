@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>l5kit.rasterization.satellite_rasterizer module &mdash; L5Kit 1.0.0 documentation</title>
+  <title>l5kit.rasterization.satellite_rasterizer module &mdash; L5Kit 1.0.3 documentation</title>
   
 
   
@@ -157,27 +157,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-l5kit.rasterization.satellite_rasterizer">
-<span id="l5kit-rasterization-satellite-rasterizer-module"></span><h1>l5kit.rasterization.satellite_rasterizer module<a class="headerlink" href="#module-l5kit.rasterization.satellite_rasterizer" title="Permalink to this headline">¶</a></h1>
-<dl class="py class">
-<dt id="l5kit.rasterization.satellite_rasterizer.SatelliteRasterizer">
-<em class="property">class </em><code class="sig-prename descclassname">l5kit.rasterization.satellite_rasterizer.</code><code class="sig-name descname">SatelliteRasterizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">raster_size</span><span class="p">:</span> <span class="n">Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">pixel_size</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">ego_center</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">map_im</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">map_to_sat</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">interpolation</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#l5kit.rasterization.satellite_rasterizer.SatelliteRasterizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="l5kit.rasterization.rasterizer.html#l5kit.rasterization.rasterizer.Rasterizer" title="l5kit.rasterization.rasterizer.Rasterizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">l5kit.rasterization.rasterizer.Rasterizer</span></code></a></p>
-<p>This rasterizer takes a satellite image in its constructor and a transform from world coordinates to this image.
-When you call rasterize, it will return a crop around the agent of interest with the agent’s forward vector
-pointing right for the current timestep.</p>
-<dl class="py method">
-<dt id="l5kit.rasterization.satellite_rasterizer.SatelliteRasterizer.rasterize">
-<code class="sig-name descname">rasterize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">history_frames</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">all_agents</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">agent</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>numpy.ndarray<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#l5kit.rasterization.satellite_rasterizer.SatelliteRasterizer.rasterize" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="l5kit.rasterization.satellite_rasterizer.SatelliteRasterizer.to_rgb">
-<code class="sig-name descname">to_rgb</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">in_im</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#l5kit.rasterization.satellite_rasterizer.SatelliteRasterizer.to_rgb" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="l5kit-rasterization-satellite-rasterizer-module">
+<h1>l5kit.rasterization.satellite_rasterizer module<a class="headerlink" href="#l5kit-rasterization-satellite-rasterizer-module" title="Permalink to this headline">¶</a></h1>
 </div>
 
 

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>l5kit.data package &mdash; L5Kit 1.0.0 documentation</title>
+  <title>l5kit.data package &mdash; L5Kit 1.0.3 documentation</title>
   
 
   
@@ -189,27 +189,32 @@
   <div class="section" id="module-l5kit.data">
 <span id="l5kit-data-package"></span><h1>l5kit.data package<a class="headerlink" href="#module-l5kit.data" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="l5kit.data.ChunkedStateDataset">
-<em class="property">class </em><code class="sig-prename descclassname">l5kit.data.</code><code class="sig-name descname">ChunkedStateDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#l5kit.data.ChunkedStateDataset" title="Permalink to this definition">¶</a></dt>
+<dt id="l5kit.data.ChunkedDataset">
+<em class="property">class </em><code class="sig-prename descclassname">l5kit.data.</code><code class="sig-name descname">ChunkedDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#l5kit.data.ChunkedDataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>ChunkedDataSet is a dataset that lives on disk in compressed chunks, it has easy to use data loading and
+<p>ChunkedDataset is a dataset that lives on disk in compressed chunks, it has easy to use data loading and
 writing interfaces that involves making numpy-like slices.</p>
 <p>Currently only .zarr directory stores are supported (i.e. the data will live in a folder on your
 local filesystem called &lt;something&gt;.zarr).</p>
 <dl class="py method">
-<dt id="l5kit.data.ChunkedStateDataset.initialize">
-<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'w'</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#l5kit.data.ChunkedStateDataset.initialize" title="Permalink to this definition">¶</a></dt>
+<dt id="l5kit.data.ChunkedDataset.initialize">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'w'</span></em>, <em class="sig-param"><span class="n">scenes_num</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">frames_num</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">agents_num</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#l5kit.data.ChunkedDataset.initialize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initializes a new zarr dataset, creating the underlying arrays.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Keyword Arguments</dt>
-<dd class="field-odd"><p><strong>mode</strong> (<em>str</em>) – Mode to open dataset in, should be something that supports writing. (default: {“w”})</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>str</em>) – Mode to open dataset in, should be something that supports writing. (default: {“w”})</p></li>
+<li><p><strong>scenes_num</strong> (<em>int</em>) – pre-allocate this number of scenes</p></li>
+<li><p><strong>frames_num</strong> (<em>int</em>) – pre-allocate this number of frames</p></li>
+<li><p><strong>agents_num</strong> (<em>int</em>) – pre-allocate this number of agents</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="l5kit.data.ChunkedStateDataset.open">
-<code class="sig-name descname">open</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'r'</span></em>, <em class="sig-param"><span class="n">cached</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">cache_size_bytes</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1000000000</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#l5kit.data.ChunkedStateDataset.open" title="Permalink to this definition">¶</a></dt>
+<dt id="l5kit.data.ChunkedDataset.open">
+<code class="sig-name descname">open</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'r'</span></em>, <em class="sig-param"><span class="n">cached</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">cache_size_bytes</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1000000000</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#l5kit.data.ChunkedDataset.open" title="Permalink to this definition">¶</a></dt>
 <dd><p>Opens a zarr dataset from disk from the path supplied in the constructor.</p>
 <blockquote>
 <div><dl class="simple">
@@ -240,7 +245,7 @@ cache_size (int): Size of cache in bytes (default: {1e9} (1GB))</p>
 <dl class="py class">
 <dt id="l5kit.data.LocalDataManager">
 <em class="property">class </em><code class="sig-prename descclassname">l5kit.data.</code><code class="sig-name descname">LocalDataManager</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">local_data_folder</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>str<span class="p">, </span>pathlib.Path<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#l5kit.data.LocalDataManager" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="l5kit.data.local_data_manager.html#l5kit.data.local_data_manager.DataManager" title="l5kit.data.local_data_manager.DataManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">l5kit.data.local_data_manager.DataManager</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../l5kit/API/l5kit.data.local_data_manager.html#l5kit.data.local_data_manager.DataManager" title="l5kit.data.local_data_manager.DataManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">l5kit.data.local_data_manager.DataManager</span></code></a></p>
 <p>LocalDataManager allows you to require data to be present in the subpath of a specific folder.</p>
 <p>Example:
 Your data folder is set to <code class="docutils literal notranslate"><span class="pre">&quot;/tmp/my-data-folder&quot;</span></code>, and you
@@ -272,18 +277,19 @@ raises an error. Returns the path to the file otherwise.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="l5kit.data.filter_agents_by_frame">
-<code class="sig-prename descclassname">l5kit.data.</code><code class="sig-name descname">filter_agents_by_frame</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">all_agents</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">frame</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#l5kit.data.filter_agents_by_frame" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given all agents, returns those in the given frame.</p>
+<dt id="l5kit.data.filter_agents_by_frames">
+<code class="sig-prename descclassname">l5kit.data.</code><code class="sig-name descname">filter_agents_by_frames</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frames</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">agents</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>numpy.ndarray<span class="p">]</span><a class="headerlink" href="#l5kit.data.filter_agents_by_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of agents array, one array per frame. Note that “agent_index_interval” is used to filter agents,
+so you should take care of re-setting it if you have previously sliced agents.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>all_agents</strong> (<em>np.ndarray</em>) – agents array</p></li>
-<li><p><strong>frame</strong> (<em>np.ndarray</em>) – frame whose agent_index_interval will be used to slice <code class="docutils literal notranslate"><span class="pre">all_agents</span></code>.</p></li>
+<li><p><strong>frames</strong> (<em>np.ndarray</em>) – an array of frames</p></li>
+<li><p><strong>agents</strong> (<em>np.ndarray</em>) – an array of agents</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>np.ndarray – An array of agents that is a subset of <cite>all_agents</cite></p>
+<dd class="field-even"><p>List[np.ndarray] with the agents divided by frame</p>
 </dd>
 </dl>
 </dd></dl>
@@ -307,14 +313,13 @@ raises an error. Returns the path to the file otherwise.</p>
 
 <dl class="py function">
 <dt id="l5kit.data.get_agent_by_track_id">
-<code class="sig-prename descclassname">l5kit.data.</code><code class="sig-name descname">get_agent_by_track_id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">all_agents</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">frame</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">track_id</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>numpy.ndarray<span class="p">]</span><a class="headerlink" href="#l5kit.data.get_agent_by_track_id" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">l5kit.data.</code><code class="sig-name descname">get_agent_by_track_id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">agents_frame</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">track_id</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>numpy.ndarray<span class="p">]</span><a class="headerlink" href="#l5kit.data.get_agent_by_track_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the agent object (np.ndarray) of a given track_id in a frame.
 Return None if the agent is not among those in the frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>all_agents</strong> (<em>np.ndarray</em>) – agents array</p></li>
-<li><p><strong>frame</strong> (<em>np.ndarray</em>) – given frame</p></li>
+<li><p><strong>agents_frame</strong> (<em>np.ndarray</em>) – frame agents array</p></li>
 <li><p><strong>track_id</strong> (<em>int</em>) – agent track id to select</p></li>
 </ul>
 </dd>
@@ -338,20 +343,6 @@ of combined scenes.</p>
 </dd>
 </dl>
 </div></blockquote>
-</dd></dl>
-
-<dl class="py function">
-<dt id="l5kit.data.load_pose_to_ecef">
-<code class="sig-prename descclassname">l5kit.data.</code><code class="sig-name descname">load_pose_to_ecef</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#l5kit.data.load_pose_to_ecef" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads the pose to ECEF transformation matrix.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>4x4 transformation matrix of dtype <code class="docutils literal notranslate"><span class="pre">np.float64</span></code>.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>np.ndarray</p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py function">

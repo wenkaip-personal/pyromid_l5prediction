@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>l5kit.data.filter module &mdash; L5Kit 1.0.0 documentation</title>
+  <title>l5kit.data.filter module &mdash; L5Kit 1.0.3 documentation</title>
   
 
   
@@ -188,18 +188,19 @@
   <div class="section" id="module-l5kit.data.filter">
 <span id="l5kit-data-filter-module"></span><h1>l5kit.data.filter module<a class="headerlink" href="#module-l5kit.data.filter" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
-<dt id="l5kit.data.filter.filter_agents_by_frame">
-<code class="sig-prename descclassname">l5kit.data.filter.</code><code class="sig-name descname">filter_agents_by_frame</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">all_agents</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">frame</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#l5kit.data.filter.filter_agents_by_frame" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given all agents, returns those in the given frame.</p>
+<dt id="l5kit.data.filter.filter_agents_by_frames">
+<code class="sig-prename descclassname">l5kit.data.filter.</code><code class="sig-name descname">filter_agents_by_frames</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frames</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">agents</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>numpy.ndarray<span class="p">]</span><a class="headerlink" href="#l5kit.data.filter.filter_agents_by_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of agents array, one array per frame. Note that “agent_index_interval” is used to filter agents,
+so you should take care of re-setting it if you have previously sliced agents.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>all_agents</strong> (<em>np.ndarray</em>) – agents array</p></li>
-<li><p><strong>frame</strong> (<em>np.ndarray</em>) – frame whose agent_index_interval will be used to slice <code class="docutils literal notranslate"><span class="pre">all_agents</span></code>.</p></li>
+<li><p><strong>frames</strong> (<em>np.ndarray</em>) – an array of frames</p></li>
+<li><p><strong>agents</strong> (<em>np.ndarray</em>) – an array of agents</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>np.ndarray – An array of agents that is a subset of <cite>all_agents</cite></p>
+<dd class="field-even"><p>List[np.ndarray] with the agents divided by frame</p>
 </dd>
 </dl>
 </dd></dl>
@@ -240,14 +241,13 @@
 
 <dl class="py function">
 <dt id="l5kit.data.filter.get_agent_by_track_id">
-<code class="sig-prename descclassname">l5kit.data.filter.</code><code class="sig-name descname">get_agent_by_track_id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">all_agents</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">frame</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">track_id</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>numpy.ndarray<span class="p">]</span><a class="headerlink" href="#l5kit.data.filter.get_agent_by_track_id" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">l5kit.data.filter.</code><code class="sig-name descname">get_agent_by_track_id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">agents_frame</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">track_id</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>numpy.ndarray<span class="p">]</span><a class="headerlink" href="#l5kit.data.filter.get_agent_by_track_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the agent object (np.ndarray) of a given track_id in a frame.
 Return None if the agent is not among those in the frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>all_agents</strong> (<em>np.ndarray</em>) – agents array</p></li>
-<li><p><strong>frame</strong> (<em>np.ndarray</em>) – given frame</p></li>
+<li><p><strong>agents_frame</strong> (<em>np.ndarray</em>) – frame agents array</p></li>
 <li><p><strong>track_id</strong> (<em>int</em>) – agent track id to select</p></li>
 </ul>
 </dd>

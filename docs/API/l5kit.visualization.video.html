@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>l5kit.visualization.video module &mdash; L5Kit 1.0.0 documentation</title>
+  <title>l5kit.visualization.video module &mdash; L5Kit 1.0.3 documentation</title>
   
 
   
@@ -181,33 +181,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-l5kit.visualization.video">
-<span id="l5kit-visualization-video-module"></span><h1>l5kit.visualization.video module<a class="headerlink" href="#module-l5kit.visualization.video" title="Permalink to this headline">¶</a></h1>
-<dl class="py function">
-<dt id="l5kit.visualization.video.write_video">
-<code class="sig-prename descclassname">l5kit.visualization.video.</code><code class="sig-name descname">write_video</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">output_filepath</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">images</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>numpy.ndarray<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">resolution</span><span class="p">:</span> <span class="n">Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">fps</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">24.0</span></em>, <em class="sig-param"><span class="n">codec</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'FMP4'</span></em>, <em class="sig-param"><span class="n">interpolation</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">2</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#l5kit.visualization.video.write_video" title="Permalink to this definition">¶</a></dt>
-<dd><p>Writes input RGB images to given output video filepath using OpenCV. It resizes images if
-necessary using given interpolation (default=``cv2.INTER_CUBIC``).</p>
-<p>Note that as this function uses OpenCV, your image’s color channels will be inverted (RGB -&gt; BGR) prior to writing.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>output_filepath</strong> (<em>str</em>) – output filepath, generally this should end in .mp4 or .avi</p></li>
-<li><p><strong>on the codec used.</strong> (<em>depending</em>) – </p></li>
-<li><p><strong>images</strong> (<em>Iterable</em><em>[</em><em>np.ndarray</em><em>]</em>) – a list or other iterable of images.</p></li>
-<li><p><strong>resolution</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – video resolution, e.g. (512, 512), the input frames are resized to this.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Keyword Arguments</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>fps</strong> (<em>float</em>) – Frames per second (default: {24.0})</p></li>
-<li><p><strong>codec</strong> (<em>str</em>) – Codec to be used. Note that with X264 codec only certain resolutions may work (default: {“FMP4”})</p></li>
-<li><p><strong>interpolation</strong> (<em>int</em>) – Interpolation to be used when resizing (default: {cv2.INTER_CUBIC})</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
+  <div class="section" id="l5kit-visualization-video-module">
+<h1>l5kit.visualization.video module<a class="headerlink" href="#l5kit-visualization-video-module" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
