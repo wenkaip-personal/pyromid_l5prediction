@@ -20,10 +20,10 @@ class LyftL5PredictionDataModule(pl.LightningDataModule):
         self.rasterizer = build_rasterizer(self.cfg, self.dm)
     
     def train_dataloader(self):
-        return build_dataloader(self.cfg, "train", self.dm, EgoDataset, self.rasterizer)
+        return build_dataloader(self.cfg, "train", self.dm, AgentDataset, self.rasterizer)
 
     def val_dataloader(self):
-        return build_dataloader(self.cfg, "val", self.dm, EgoDataset, self.rasterizer)
+        return build_dataloader(self.cfg, "val", self.dm, AgentDataset, self.rasterizer)
 
     def test_dataloader(self):
         pass

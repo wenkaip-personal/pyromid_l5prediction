@@ -11,6 +11,9 @@ from tqdm import tqdm
 from l5kit.evaluation import write_coords_as_csv, compute_mse_error_csv
 from l5kit.geometry import transform_points
 from l5kit.visualization import PREDICTED_POINTS_COLOR, TARGET_POINTS_COLOR, draw_trajectory
+from l5kit.rasterization import build_rasterizer
+from l5kit.configs import load_config_data
+from l5kit.data import LocalDataManager
 from prettytable import PrettyTable
 import pytorch_lightning as pl
 from argparse import ArgumentParser
@@ -31,6 +34,42 @@ class AE_exp(AE):
                  ):
         self.save_hyperparameters()
         super().__init__(**self.hparams)
+    
+    def _step(self, batch):
+        x = batch['image']
+        x = x.view(x.shape[0],-1) # flatten image to raster scan
+        z = self(x)
+        x_hat = self.decoder(z)         
+        loss = self.loss(x_hat, x) 
+
+        # Needed for viz callbacks
+        import ipdb; ipdb.set_trace()
+        self.img_shape = batch['image'].shape[1:]
+        self.last_batch = batch
+        return {
+            'loss': loss,
+            'x': x,
+            'z': z,
+            'x_hat': x_hat,
+            'viz': {            # contents of dict will be img to autoviz
+                    'x': x,
+                    'x_hat': x_hat,
+                   },
+        }
+    
+    def validation_epoch_end(self, outputs):
+        avg_loss = torch.stack([x['avg_val_loss'] for x in outputs]).mean()
+                                                        #current batch size, img_ch, img_h, img_w
+        x_hat = outputs[-1]['step_dict']['x_hat'].view(outputs[-1]['step_dict']['x_hat'].shape[0], *self.hparams.img_dims)
+        grid = torchvision.utils.make_grid(x_hat)
+        self.logger.experiment.add_image('images', grid, 0)
+
+        tensorboard_logs = {'mse_loss': avg_loss}
+
+        return {
+            'avg_val_loss': avg_loss,
+            'log': tensorboard_logs,
+        }
 
 def build_model_resnet50(cfg: Dict) -> torch.nn.Module:
     # load pre-trained Conv2D model
@@ -79,9 +118,10 @@ if __name__ == '__main__':
 
     # set env variable for data
     os.environ["L5KIT_DATA_FOLDER"] = "/home/herb/WRK/ken/data"
-
+    cfg = load_config_data("./agent_motion_config.yaml")
+    dm = LocalDataManager(None)
+    rasterizer = build_rasterizer(cfg, dm)
     # ==== INIT DATAMODULE
-    # import ipdb; ipdb.set_trace()
     dm = LyftL5PredictionDataModule()
     # dm = FashionMNISTDataModule(data_dir=args.data_dir,
     #                         num_workers=args.num_workers,
@@ -90,13 +130,17 @@ if __name__ == '__main__':
     dm.setup(stage = "fit")
 
     # print out a single sample from data module
-    # train_batch_1 = next(iter(dm.train_dataloader()))
-    # print(train_batch_1)
-    # print(train_batch_1['image'])
-    # print(train_batch_1['image'].shape)
-    # print(train_batch_1.keys())
+    train_batch_1 = next(iter(dm.train_dataloader()))
+    print(train_batch_1)
+    print(train_batch_1['image'])
+    print(train_batch_1['image'].shape)
+    print(train_batch_1.keys())
 
-    input_dim = np.prod(dm.size()) # serialized to single dimension
+    train_agent_dataset = dm.train_dataloader().dataset.datasets[0].dataset
+    example_image = train_agent_dataset[0]['image']
+
+
+    input_dim = np.prod(example_image.shape) # serialized to single dimension
     # input_dim is technically not a hyperparam here, so it is excluded from args
 
     # Initialize Model

@@ -9,6 +9,7 @@ from torch.nn import functional as F
 import sys
 from pathlib import Path
 sys.path.insert(0,str(Path().resolve().parents[1]))
+sys.path.insert(0, "/home/herb/WRK/ken/l5kit_repo")
 #====================================================
 
 import pytorch_lightning as pl
@@ -37,6 +38,8 @@ class AE(pl.LightningModule):
         self._init_encoder(input_dim,
                            self.hparams.hidden_layer_dim_list,
                            self.hparams.latent_dim)
+        # import ipdb; ipdb.set_trace()
+        
 
         self._init_decoder(input_dim,
                            list(reversed(self.hparams.hidden_layer_dim_list)),
