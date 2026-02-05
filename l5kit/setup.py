@@ -16,7 +16,7 @@ setup(
         "matplotlib",
         "numpy",
         "opencv-contrib-python-headless",
-        "protobuf==3.12.2",
+        "protobuf==5.29.6",
         "pymap3d",
         "scipy",
         "setuptools",
